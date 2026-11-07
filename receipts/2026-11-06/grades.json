@@ -1,0 +1,1161 @@
+{
+ "financial-advisor": {
+  "verdict": "good",
+  "facts": {
+   "morse_runs_7d": 100,
+   "morse_labeled_7d": 39,
+   "morse_labeled_ok_7d": 32,
+   "morse_agents": 3,
+   "brief_headline": "Repeated failure: ValueError",
+   "brief_chip": "Needs attention",
+   "brief_status": "ready",
+   "brief_stale": false,
+   "attention_items": 6,
+   "gt_judged": 55,
+   "gt_passed": 43,
+   "gt_labeled": 38,
+   "gt_labeled_passed": 31,
+   "gt_driver_calls": 98,
+   "db_traces": null,
+   "db_cost": null
+  },
+  "findings": [
+   {
+    "kind": "ok",
+    "area": "outcomes",
+    "expected": "labeled success 82% (31/38)",
+    "shown": "82% (32/39) across 3 agents",
+    "route": "/api/v1/agents?window_days=7&limit=50",
+    "evidence": ""
+   },
+   {
+    "kind": "info",
+    "area": "outcomes",
+    "expected": "success rate shown once labels exist",
+    "shown": "'not enough judged runs' on 3 agent(s) (needs 30)",
+    "route": "/api/v1/agents?window_days=7&limit=50",
+    "evidence": ""
+   },
+   {
+    "kind": "ok",
+    "area": "expectation",
+    "expected": "success_rate >= 0.8 (measured: reviews/2026-11-05 baseline labeled 17/20)",
+    "shown": "success_rate=0.8158 over n=38 (driver labeled turns); within expectation",
+    "route": "/api/v1/agents?window_days=7&limit=50",
+    "evidence": "owner profile"
+   },
+   {
+    "kind": "inconclusive",
+    "area": "expectation",
+    "expected": "cost_per_run_usd <= 0.02 (stated: persona definition 2026-11-05)",
+    "shown": "inconclusive: no db cross-check or fewer than 5 traces",
+    "route": "/api/v1/agents?window_days=7&limit=50",
+    "evidence": "owner profile"
+   }
+  ]
+ },
+ "finance-swarm": {
+  "verdict": "fair",
+  "facts": {
+   "morse_runs_7d": 11,
+   "morse_labeled_7d": 0,
+   "morse_labeled_ok_7d": 0,
+   "morse_agents": 3,
+   "brief_headline": "Eval regression: instruction following v1",
+   "brief_chip": "Needs attention",
+   "brief_status": "ready",
+   "brief_stale": true,
+   "attention_items": 6,
+   "gt_judged": 0,
+   "gt_passed": 0,
+   "gt_labeled": 0,
+   "gt_labeled_passed": 0,
+   "gt_driver_calls": 38,
+   "db_traces": null,
+   "db_cost": null
+  },
+  "findings": [
+   {
+    "kind": "info",
+    "area": "freshness",
+    "expected": "brief computed from current data",
+    "shown": "is_stale=true, computed_at=2026-11-06T02:40:04.722Z",
+    "route": "/api/v1/dashboard/dashboards/org-brief?window_days=7",
+    "evidence": ""
+   },
+   {
+    "kind": "wrong",
+    "area": "false_positive",
+    "expected": "a critical top-slot worklist item is explained by a planted or known event",
+    "shown": "top item is critical: 'Eval regression: instruction following v1'; events: ['tracing_started']",
+    "route": "/api/v1/dashboard/dashboards/attention-worklist?window_days=7",
+    "evidence": "worklist order assumed to be rank order"
+   },
+   {
+    "kind": "inconclusive",
+    "area": "expectation",
+    "expected": "success_rate >= 0.8 (assumed: no labeled outcomes in baseline)",
+    "shown": "inconclusive: fewer than 5 labeled runs in the window",
+    "route": "/api/v1/agents?window_days=7&limit=50",
+    "evidence": "owner profile"
+   },
+   {
+    "kind": "inconclusive",
+    "area": "expectation",
+    "expected": "cost_per_run_usd <= 0.002 (measured: reviews/2026-11-05 baseline cost/run 0.0004)",
+    "shown": "inconclusive: no db cross-check or fewer than 5 traces",
+    "route": "/api/v1/agents?window_days=7&limit=50",
+    "evidence": "owner profile"
+   }
+  ]
+ },
+ "stock-research-vertex": {
+  "verdict": "fair",
+  "facts": {
+   "morse_runs_7d": 16,
+   "morse_labeled_7d": 0,
+   "morse_labeled_ok_7d": 0,
+   "morse_agents": 1,
+   "brief_headline": "Eval regression: helpfulness v1",
+   "brief_chip": "Needs attention",
+   "brief_status": "ready",
+   "brief_stale": true,
+   "attention_items": 5,
+   "gt_judged": 0,
+   "gt_passed": 0,
+   "gt_labeled": 0,
+   "gt_labeled_passed": 0,
+   "gt_driver_calls": 38,
+   "db_traces": null,
+   "db_cost": null
+  },
+  "findings": [
+   {
+    "kind": "info",
+    "area": "freshness",
+    "expected": "brief computed from current data",
+    "shown": "is_stale=true, computed_at=2026-11-06T02:40:06.718Z",
+    "route": "/api/v1/dashboard/dashboards/org-brief?window_days=7",
+    "evidence": ""
+   },
+   {
+    "kind": "wrong",
+    "area": "false_positive",
+    "expected": "a critical top-slot worklist item is explained by a planted or known event",
+    "shown": "top item is critical: 'Eval regression: helpfulness v1'; events: ['tracing_started']",
+    "route": "/api/v1/dashboard/dashboards/attention-worklist?window_days=7",
+    "evidence": "worklist order assumed to be rank order"
+   },
+   {
+    "kind": "inconclusive",
+    "area": "expectation",
+    "expected": "success_rate >= 0.9 (assumed: no labeled outcomes in baseline)",
+    "shown": "inconclusive: fewer than 5 labeled runs in the window",
+    "route": "/api/v1/agents?window_days=7&limit=50",
+    "evidence": "owner profile"
+   },
+   {
+    "kind": "inconclusive",
+    "area": "expectation",
+    "expected": "cost_per_run_usd <= 0.002 (measured: reviews/2026-11-05 baseline cost/run 0.0002)",
+    "shown": "inconclusive: no db cross-check or fewer than 5 traces",
+    "route": "/api/v1/agents?window_days=7&limit=50",
+    "evidence": "owner profile"
+   }
+  ]
+ },
+ "due-diligence": {
+  "verdict": "good",
+  "facts": {
+   "morse_runs_7d": 13,
+   "morse_labeled_7d": 13,
+   "morse_labeled_ok_7d": 13,
+   "morse_agents": 1,
+   "brief_headline": "Read \u2014 dependency attribution firing on Read",
+   "brief_chip": "Worth watching",
+   "brief_status": "ready",
+   "brief_stale": true,
+   "attention_items": 4,
+   "gt_judged": 0,
+   "gt_passed": 0,
+   "gt_labeled": 0,
+   "gt_labeled_passed": 0,
+   "gt_driver_calls": 1,
+   "db_traces": null,
+   "db_cost": null
+  },
+  "findings": [
+   {
+    "kind": "info",
+    "area": "freshness",
+    "expected": "brief computed from current data",
+    "shown": "is_stale=true, computed_at=2026-11-06T01:50:03.770Z",
+    "route": "/api/v1/dashboard/dashboards/org-brief?window_days=7",
+    "evidence": ""
+   },
+   {
+    "kind": "info",
+    "area": "false_positive",
+    "expected": "no drop/regression alarm on an app with no planted or known change",
+    "shown": "1 worklist alarm(s), 0 regressed change(s): ['Eval regression: response coherence v1']",
+    "route": "/api/v1/dashboard/dashboards/attention-worklist?window_days=7",
+    "evidence": "db shows an unplanted drop, or too few labeled days to tell"
+   },
+   {
+    "kind": "inconclusive",
+    "area": "expectation",
+    "expected": "success_rate >= 0.9 (measured: reviews/2026-11-05 baseline labeled 13/13)",
+    "shown": "inconclusive: fewer than 5 labeled runs in the window",
+    "route": "/api/v1/agents?window_days=7&limit=50",
+    "evidence": "owner profile"
+   },
+   {
+    "kind": "inconclusive",
+    "area": "expectation",
+    "expected": "cost_per_run_usd <= 0.3 (measured: reviews/2026-11-05 baseline cost/run 0.14)",
+    "shown": "inconclusive: no db cross-check or fewer than 5 traces",
+    "route": "/api/v1/agents?window_days=7&limit=50",
+    "evidence": "owner profile"
+   }
+  ]
+ },
+ "lawglance": {
+  "verdict": "fair",
+  "facts": {
+   "morse_runs_7d": 168,
+   "morse_labeled_7d": 82,
+   "morse_labeled_ok_7d": 30,
+   "morse_agents": 4,
+   "brief_headline": "langgraph is failing 68% of labeled runs \u2014 Runs labeled failed at checkpointer.InMemorySaver.put (memory)",
+   "brief_chip": "Needs attention",
+   "brief_status": "ready",
+   "brief_stale": true,
+   "attention_items": 6,
+   "gt_judged": 36,
+   "gt_passed": 15,
+   "gt_labeled": 36,
+   "gt_labeled_passed": 15,
+   "gt_driver_calls": 76,
+   "db_traces": null,
+   "db_cost": null
+  },
+  "findings": [
+   {
+    "kind": "ok",
+    "area": "outcomes",
+    "expected": "labeled success 42% (15/36)",
+    "shown": "37% (30/82) across 4 agents",
+    "route": "/api/v1/agents?window_days=7&limit=50",
+    "evidence": ""
+   },
+   {
+    "kind": "info",
+    "area": "outcomes",
+    "expected": "success rate shown once labels exist",
+    "shown": "'not enough judged runs' on 2 agent(s) (needs 30)",
+    "route": "/api/v1/agents?window_days=7&limit=50",
+    "evidence": ""
+   },
+   {
+    "kind": "ok",
+    "area": "attention",
+    "expected": "brief leads with failures (58% of 36 judged turns failed)",
+    "shown": "headline: 'langgraph is failing 68% of labeled runs \u2014 Runs labeled failed at checkpointer.InMemorySaver.put (memory)'; chip: Needs attention",
+    "route": "/api/v1/dashboard/dashboards/org-brief?window_days=7",
+    "evidence": ""
+   },
+   {
+    "kind": "inconclusive",
+    "area": "verify",
+    "expected": "model change gpt-4o-mini -> claude-haiku-4-5 (2026-11-04): the agent whose traffic changed is identified",
+    "shown": "DB spans carry the model per org, not per agent, and more than one agent has runs",
+    "route": "/api/v1/agents/{id}/changes",
+    "evidence": "reviews/known_events.json"
+   },
+   {
+    "kind": "unsupported",
+    "area": "attention",
+    "expected": "headline states what failed, not a code location as the cause",
+    "shown": "langgraph is failing 68% of labeled runs \u2014 Runs labeled failed at checkpointer.InMemorySaver.put (memory)",
+    "route": "/api/v1/dashboard/dashboards/org-brief?window_days=7",
+    "evidence": "ground-truth causes: ['input: question outside the legal corpus']"
+   },
+   {
+    "kind": "info",
+    "area": "freshness",
+    "expected": "brief computed from current data",
+    "shown": "is_stale=true, computed_at=2026-11-06T02:20:14.970Z",
+    "route": "/api/v1/dashboard/dashboards/org-brief?window_days=7",
+    "evidence": ""
+   },
+   {
+    "kind": "ok",
+    "area": "expectation",
+    "expected": "success_rate >= 0.7 (stated: persona definition 2026-11-05); target breached reaches the brief or worklist",
+    "shown": "success_rate=0.4167 over n=36 (driver labeled turns); surfaced",
+    "route": "/api/v1/dashboard/dashboards/org-brief?window_days=7",
+    "evidence": "owner profile"
+   },
+   {
+    "kind": "inconclusive",
+    "area": "expectation",
+    "expected": "cost_per_run_usd <= 0.01 (stated: persona definition 2026-11-05)",
+    "shown": "inconclusive: no db cross-check or fewer than 5 traces",
+    "route": "/api/v1/agents?window_days=7&limit=50",
+    "evidence": "owner profile"
+   }
+  ]
+ },
+ "medigenius": {
+  "verdict": "poor",
+  "facts": {
+   "morse_runs_7d": 11,
+   "morse_labeled_7d": 0,
+   "morse_labeled_ok_7d": 0,
+   "morse_agents": 1,
+   "brief_headline": "GET en.wikipedia.org \u2014 dependency attribution firing on GET en.wikipedia.org",
+   "brief_chip": "Needs attention",
+   "brief_status": "ready",
+   "brief_stale": true,
+   "attention_items": 4,
+   "gt_judged": 0,
+   "gt_passed": 0,
+   "gt_labeled": 0,
+   "gt_labeled_passed": 0,
+   "gt_driver_calls": 39,
+   "db_traces": null,
+   "db_cost": null
+  },
+  "findings": [
+   {
+    "kind": "missing",
+    "area": "verify",
+    "expected": "model change gpt-4o-mini -> claude-haiku-4-5 (2026-11-04): a 'model' change exists on 'default-agent'",
+    "shown": "0 model change(s) on 'default-agent' since 2026-11-04; 0 changes in total across agents",
+    "route": "/api/v1/agents/{id}/changes",
+    "evidence": "reviews/known_events.json"
+   },
+   {
+    "kind": "missing",
+    "area": "verify",
+    "expected": "model change gpt-4o-mini -> claude-haiku-4-5 (2026-11-04): that change names claude-haiku-4-5",
+    "shown": "no such change",
+    "route": "/api/v1/agents/{id}/changes",
+    "evidence": "reviews/known_events.json"
+   },
+   {
+    "kind": "missing",
+    "area": "verify",
+    "expected": "model change gpt-4o-mini -> claude-haiku-4-5 (2026-11-04): before/after values with sample sizes",
+    "shown": "no such change",
+    "route": "/api/v1/agents/{id}/changes",
+    "evidence": "reviews/known_events.json"
+   },
+   {
+    "kind": "missing",
+    "area": "attention",
+    "expected": "model change gpt-4o-mini -> claude-haiku-4-5 (2026-11-04): a brief or worklist row names 'default-agent' with the model",
+    "shown": "no brief/worklist row names both 'default-agent' and claude-haiku-4-5",
+    "route": "/home (Org Brief, Needs attention)",
+    "evidence": "reviews/known_events.json"
+   },
+   {
+    "kind": "info",
+    "area": "freshness",
+    "expected": "brief computed from current data",
+    "shown": "is_stale=true, computed_at=2026-11-06T02:10:05.143Z",
+    "route": "/api/v1/dashboard/dashboards/org-brief?window_days=7",
+    "evidence": ""
+   },
+   {
+    "kind": "inconclusive",
+    "area": "expectation",
+    "expected": "success_rate >= 0.9 (assumed: no labeled outcomes yet; safety posture implies a high floor)",
+    "shown": "inconclusive: fewer than 5 labeled runs in the window",
+    "route": "/api/v1/agents?window_days=7&limit=50",
+    "evidence": "owner profile"
+   },
+   {
+    "kind": "inconclusive",
+    "area": "expectation",
+    "expected": "cost_per_run_usd <= 0.005 (stated: persona definition 2026-11-05)",
+    "shown": "inconclusive: no db cross-check or fewer than 5 traces",
+    "route": "/api/v1/agents?window_days=7&limit=50",
+    "evidence": "owner profile"
+   },
+   {
+    "kind": "missing",
+    "area": "ask_morse",
+    "expected": "answers 'Did the assistant answer anything this week it should have refused?'",
+    "shown": "errors=[] declined=I can\u2019t determine whether answers should have been refused from an available measured result.",
+    "route": "/api/v1/copilot/chat",
+    "evidence": ""
+   }
+  ]
+ },
+ "real-estate": {
+  "verdict": "good",
+  "facts": {
+   "morse_runs_7d": 182,
+   "morse_labeled_7d": 116,
+   "morse_labeled_ok_7d": 61,
+   "morse_agents": 4,
+   "brief_headline": "ConversationalRetrievalChain is failing 40% of labeled runs \u2014 langchain_anthropic.chat_models.AnthropicInvalidRequestError",
+   "brief_chip": "Needs attention",
+   "brief_status": "ready",
+   "brief_stale": true,
+   "attention_items": 6,
+   "gt_judged": 70,
+   "gt_passed": 56,
+   "gt_labeled": 70,
+   "gt_labeled_passed": 56,
+   "gt_driver_calls": 126,
+   "db_traces": null,
+   "db_cost": null
+  },
+  "findings": [
+   {
+    "kind": "info",
+    "area": "outcomes",
+    "expected": "labeled success 80% (56/70)",
+    "shown": "53% (61/116) across 4 agents",
+    "route": "/api/v1/agents?window_days=7&limit=50",
+    "evidence": ""
+   },
+   {
+    "kind": "info",
+    "area": "outcomes",
+    "expected": "success rate shown once labels exist",
+    "shown": "'not enough judged runs' on 2 agent(s) (needs 30)",
+    "route": "/api/v1/agents?window_days=7&limit=50",
+    "evidence": ""
+   },
+   {
+    "kind": "inconclusive",
+    "area": "verify",
+    "expected": "model change gpt-4o-mini -> claude-haiku-4-5 (2026-11-04): the agent whose traffic changed is identified",
+    "shown": "DB spans carry the model per org, not per agent, and more than one agent has runs",
+    "route": "/api/v1/agents/{id}/changes",
+    "evidence": "reviews/known_events.json"
+   },
+   {
+    "kind": "info",
+    "area": "freshness",
+    "expected": "brief computed from current data",
+    "shown": "is_stale=true, computed_at=2026-11-06T02:20:19.628Z",
+    "route": "/api/v1/dashboard/dashboards/org-brief?window_days=7",
+    "evidence": ""
+   },
+   {
+    "kind": "ok",
+    "area": "expectation",
+    "expected": "success_rate >= 0.7 (stated: persona definition 2026-11-05)",
+    "shown": "success_rate=0.8 over n=70 (driver labeled turns); within expectation",
+    "route": "/api/v1/agents?window_days=7&limit=50",
+    "evidence": "owner profile"
+   },
+   {
+    "kind": "inconclusive",
+    "area": "expectation",
+    "expected": "cost_per_run_usd <= 0.005 (stated: persona definition 2026-11-05)",
+    "shown": "inconclusive: no db cross-check or fewer than 5 traces",
+    "route": "/api/v1/agents?window_days=7&limit=50",
+    "evidence": "owner profile"
+   }
+  ]
+ },
+ "resume-matcher": {
+  "verdict": "poor",
+  "facts": {
+   "morse_runs_7d": 43,
+   "morse_labeled_7d": 0,
+   "morse_labeled_ok_7d": 0,
+   "morse_agents": 1,
+   "brief_headline": "POST /api/v1/resumes/improve \u2014 dependency attribution firing on POST /api/v1/resumes/improve",
+   "brief_chip": "Worth watching",
+   "brief_status": "ready",
+   "brief_stale": true,
+   "attention_items": 4,
+   "gt_judged": 0,
+   "gt_passed": 0,
+   "gt_labeled": 0,
+   "gt_labeled_passed": 0,
+   "gt_driver_calls": 58,
+   "db_traces": null,
+   "db_cost": null
+  },
+  "findings": [
+   {
+    "kind": "missing",
+    "area": "verify",
+    "expected": "model change gpt-4o-mini -> claude-haiku-4-5 (2026-11-04): a 'model' change exists on 'testbed-resume-matcher'",
+    "shown": "0 model change(s) on 'testbed-resume-matcher' since 2026-11-04; 0 changes in total across agents",
+    "route": "/api/v1/agents/{id}/changes",
+    "evidence": "reviews/known_events.json"
+   },
+   {
+    "kind": "missing",
+    "area": "verify",
+    "expected": "model change gpt-4o-mini -> claude-haiku-4-5 (2026-11-04): that change names claude-haiku-4-5",
+    "shown": "no such change",
+    "route": "/api/v1/agents/{id}/changes",
+    "evidence": "reviews/known_events.json"
+   },
+   {
+    "kind": "missing",
+    "area": "verify",
+    "expected": "model change gpt-4o-mini -> claude-haiku-4-5 (2026-11-04): before/after values with sample sizes",
+    "shown": "no such change",
+    "route": "/api/v1/agents/{id}/changes",
+    "evidence": "reviews/known_events.json"
+   },
+   {
+    "kind": "missing",
+    "area": "attention",
+    "expected": "model change gpt-4o-mini -> claude-haiku-4-5 (2026-11-04): a brief or worklist row names 'testbed-resume-matcher' with the model",
+    "shown": "no brief/worklist row names both 'testbed-resume-matcher' and claude-haiku-4-5",
+    "route": "/home (Org Brief, Needs attention)",
+    "evidence": "reviews/known_events.json"
+   },
+   {
+    "kind": "info",
+    "area": "freshness",
+    "expected": "brief computed from current data",
+    "shown": "is_stale=true, computed_at=2026-11-06T02:00:11.924Z",
+    "route": "/api/v1/dashboard/dashboards/org-brief?window_days=7",
+    "evidence": ""
+   },
+   {
+    "kind": "inconclusive",
+    "area": "expectation",
+    "expected": "success_rate >= 0.8 (assumed: no labeled outcomes yet)",
+    "shown": "inconclusive: fewer than 5 labeled runs in the window",
+    "route": "/api/v1/agents?window_days=7&limit=50",
+    "evidence": "owner profile"
+   },
+   {
+    "kind": "inconclusive",
+    "area": "expectation",
+    "expected": "cost_per_run_usd <= 0.02 (stated: persona definition 2026-11-05)",
+    "shown": "inconclusive: no db cross-check or fewer than 5 traces",
+    "route": "/api/v1/agents?window_days=7&limit=50",
+    "evidence": "owner profile"
+   },
+   {
+    "kind": "missing",
+    "area": "ask_morse",
+    "expected": "answers 'What did I pay per analyzed resume this week, and is any of my spend unpriced?'",
+    "shown": "errors=[] declined=I can't verify this from your data. None of my available reads measures that claim. I can show the recorded Morse eviden",
+    "route": "/api/v1/copilot/chat",
+    "evidence": ""
+   }
+  ]
+ },
+ "resume-matcher-azure": {
+  "verdict": "fair",
+  "facts": {
+   "morse_runs_7d": 54,
+   "morse_labeled_7d": 0,
+   "morse_labeled_ok_7d": 0,
+   "morse_agents": 1,
+   "brief_headline": "1 slow traces above threshold",
+   "brief_chip": "Needs attention",
+   "brief_status": "ready",
+   "brief_stale": true,
+   "attention_items": 5,
+   "gt_judged": 0,
+   "gt_passed": 0,
+   "gt_labeled": 0,
+   "gt_labeled_passed": 0,
+   "gt_driver_calls": 45,
+   "db_traces": null,
+   "db_cost": null
+  },
+  "findings": [
+   {
+    "kind": "info",
+    "area": "freshness",
+    "expected": "brief computed from current data",
+    "shown": "is_stale=true, computed_at=2026-11-06T02:40:17.689Z",
+    "route": "/api/v1/dashboard/dashboards/org-brief?window_days=7",
+    "evidence": ""
+   },
+   {
+    "kind": "info",
+    "area": "false_positive",
+    "expected": "no drop/regression alarm on an app with no planted or known change",
+    "shown": "1 worklist alarm(s), 0 regressed change(s): ['Eval regression: response coherence v1']",
+    "route": "/api/v1/dashboard/dashboards/attention-worklist?window_days=7",
+    "evidence": "db shows an unplanted drop, or too few labeled days to tell"
+   },
+   {
+    "kind": "wrong",
+    "area": "false_positive",
+    "expected": "a critical top-slot worklist item is explained by a planted or known event",
+    "shown": "top item is critical: '1 slow traces above threshold'; events: none planted or known in the window",
+    "route": "/api/v1/dashboard/dashboards/attention-worklist?window_days=7",
+    "evidence": "worklist order assumed to be rank order"
+   },
+   {
+    "kind": "inconclusive",
+    "area": "expectation",
+    "expected": "success_rate >= 0.8 (assumed: no labeled outcomes yet)",
+    "shown": "inconclusive: fewer than 5 labeled runs in the window",
+    "route": "/api/v1/agents?window_days=7&limit=50",
+    "evidence": "owner profile"
+   },
+   {
+    "kind": "inconclusive",
+    "area": "expectation",
+    "expected": "cost_per_run_usd <= 0.005 (measured: reviews/2026-11-05 baseline cost/run 0.0007)",
+    "shown": "inconclusive: no db cross-check or fewer than 5 traces",
+    "route": "/api/v1/agents?window_days=7&limit=50",
+    "evidence": "owner profile"
+   }
+  ]
+ },
+ "azure-search": {
+  "verdict": "fair",
+  "facts": {
+   "morse_runs_7d": 46,
+   "morse_labeled_7d": 2,
+   "morse_labeled_ok_7d": 0,
+   "morse_agents": 7,
+   "brief_headline": "2 slow traces above threshold",
+   "brief_chip": "Needs attention",
+   "brief_status": "ready",
+   "brief_stale": true,
+   "attention_items": 6,
+   "gt_judged": 0,
+   "gt_passed": 0,
+   "gt_labeled": 0,
+   "gt_labeled_passed": 0,
+   "gt_driver_calls": 36,
+   "db_traces": null,
+   "db_cost": null
+  },
+  "findings": [
+   {
+    "kind": "info",
+    "area": "freshness",
+    "expected": "brief computed from current data",
+    "shown": "is_stale=true, computed_at=2026-11-06T02:30:10.024Z",
+    "route": "/api/v1/dashboard/dashboards/org-brief?window_days=7",
+    "evidence": ""
+   },
+   {
+    "kind": "wrong",
+    "area": "false_positive",
+    "expected": "a critical top-slot worklist item is explained by a planted or known event",
+    "shown": "top item is critical: '2 slow traces above threshold'; events: ['pricing_gap']",
+    "route": "/api/v1/dashboard/dashboards/attention-worklist?window_days=7",
+    "evidence": "worklist order assumed to be rank order"
+   },
+   {
+    "kind": "inconclusive",
+    "area": "expectation",
+    "expected": "success_rate >= 0.8 (assumed: only 2 labeled runs in the baseline window)",
+    "shown": "inconclusive: fewer than 5 labeled runs in the window",
+    "route": "/api/v1/agents?window_days=7&limit=50",
+    "evidence": "owner profile"
+   },
+   {
+    "kind": "inconclusive",
+    "area": "expectation",
+    "expected": "cost_per_run_usd <= 0.002 (measured: reviews/2026-11-05 baseline cost/run 0.0003)",
+    "shown": "inconclusive: no db cross-check or fewer than 5 traces",
+    "route": "/api/v1/agents?window_days=7&limit=50",
+    "evidence": "owner profile"
+   }
+  ]
+ },
+ "holmesgpt": {
+  "verdict": "poor",
+  "facts": {
+   "morse_runs_7d": 43,
+   "morse_labeled_7d": 12,
+   "morse_labeled_ok_7d": 0,
+   "morse_agents": 1,
+   "brief_headline": "testbed-holmesgpt is failing 100% of labeled runs \u2014 Runs labeled failed at POST (HTTP request)",
+   "brief_chip": "Needs attention",
+   "brief_status": "ready",
+   "brief_stale": true,
+   "attention_items": 6,
+   "gt_judged": 15,
+   "gt_passed": 0,
+   "gt_labeled": 11,
+   "gt_labeled_passed": 0,
+   "gt_driver_calls": 35,
+   "db_traces": null,
+   "db_cost": null
+  },
+  "findings": [
+   {
+    "kind": "ok",
+    "area": "outcomes",
+    "expected": "labeled success 0% (0/11)",
+    "shown": "0% (0/12) across 1 agents",
+    "route": "/api/v1/agents?window_days=7&limit=50",
+    "evidence": ""
+   },
+   {
+    "kind": "info",
+    "area": "outcomes",
+    "expected": "success rate shown once labels exist",
+    "shown": "'not enough judged runs' on 1 agent(s) (needs 30)",
+    "route": "/api/v1/agents?window_days=7&limit=50",
+    "evidence": ""
+   },
+   {
+    "kind": "ok",
+    "area": "attention",
+    "expected": "brief leads with failures (100% of 15 judged turns failed)",
+    "shown": "headline: 'testbed-holmesgpt is failing 100% of labeled runs \u2014 Runs labeled failed at POST (HTTP request)'; chip: Needs attention",
+    "route": "/api/v1/dashboard/dashboards/org-brief?window_days=7",
+    "evidence": ""
+   },
+   {
+    "kind": "ok",
+    "area": "verify",
+    "expected": "model change gpt-4o-mini -> claude-haiku-4-5 (2026-11-04): a 'model' change exists on 'testbed-holmesgpt'",
+    "shown": "1 model change(s) on 'testbed-holmesgpt' since 2026-11-04; 1 changes in total across agents",
+    "route": "/api/v1/agents/{id}/changes",
+    "evidence": "reviews/known_events.json"
+   },
+   {
+    "kind": "missing",
+    "area": "verify",
+    "expected": "model change gpt-4o-mini -> claude-haiku-4-5 (2026-11-04): that change names claude-haiku-4-5",
+    "shown": "the change does not name it",
+    "route": "/api/v1/agents/{id}/changes",
+    "evidence": "reviews/known_events.json"
+   },
+   {
+    "kind": "missing",
+    "area": "verify",
+    "expected": "model change gpt-4o-mini -> claude-haiku-4-5 (2026-11-04): before/after values with sample sizes",
+    "shown": "change has 0 lanes (status='detected'); the API exposes no before/after evidence",
+    "route": "/api/v1/agents/{id}/changes",
+    "evidence": "reviews/known_events.json"
+   },
+   {
+    "kind": "missing",
+    "area": "attention",
+    "expected": "model change gpt-4o-mini -> claude-haiku-4-5 (2026-11-04): a brief or worklist row names 'testbed-holmesgpt' with the model",
+    "shown": "no brief/worklist row names both 'testbed-holmesgpt' and claude-haiku-4-5",
+    "route": "/home (Org Brief, Needs attention)",
+    "evidence": "reviews/known_events.json"
+   },
+   {
+    "kind": "info",
+    "area": "freshness",
+    "expected": "brief computed from current data",
+    "shown": "is_stale=true, computed_at=2026-11-06T02:20:21.127Z",
+    "route": "/api/v1/dashboard/dashboards/org-brief?window_days=7",
+    "evidence": ""
+   },
+   {
+    "kind": "ok",
+    "area": "expectation",
+    "expected": "success_rate >= 0.6 (stated: persona definition 2026-11-05); target breached reaches the brief or worklist",
+    "shown": "success_rate=0 over n=11 (driver labeled turns); surfaced",
+    "route": "/api/v1/dashboard/dashboards/org-brief?window_days=7",
+    "evidence": "owner profile"
+   },
+   {
+    "kind": "inconclusive",
+    "area": "expectation",
+    "expected": "cost_per_run_usd <= 0.5 (stated: persona definition 2026-11-05)",
+    "shown": "inconclusive: no db cross-check or fewer than 5 traces",
+    "route": "/api/v1/agents?window_days=7&limit=50",
+    "evidence": "owner profile"
+   },
+   {
+    "kind": "missing",
+    "area": "ask_morse",
+    "expected": "answers 'What does one investigation cost me now, and did that change this week?'",
+    "shown": "errors=[] declined=I can\u2019t determine the cost per investigation or how it changed this week from the available measurements.",
+    "route": "/api/v1/copilot/chat",
+    "evidence": ""
+   }
+  ]
+ },
+ "commerce-agents": {
+  "verdict": "fair",
+  "facts": {
+   "morse_runs_7d": 420,
+   "morse_labeled_7d": 42,
+   "morse_labeled_ok_7d": 25,
+   "morse_agents": 4,
+   "brief_headline": "commerce-agents is failing 39% of labeled runs \u2014 Runs labeled failed at anthropic.messages.stream (LLM call)",
+   "brief_chip": "Needs attention",
+   "brief_status": "ready",
+   "brief_stale": true,
+   "attention_items": 6,
+   "gt_judged": 49,
+   "gt_passed": 34,
+   "gt_labeled": 32,
+   "gt_labeled_passed": 20,
+   "gt_driver_calls": 98,
+   "db_traces": null,
+   "db_cost": null
+  },
+  "findings": [
+   {
+    "kind": "ok",
+    "area": "outcomes",
+    "expected": "labeled success 62% (20/32)",
+    "shown": "60% (25/42) across 4 agents",
+    "route": "/api/v1/agents?window_days=7&limit=50",
+    "evidence": ""
+   },
+   {
+    "kind": "info",
+    "area": "outcomes",
+    "expected": "success rate shown once labels exist",
+    "shown": "'not enough judged runs' on 3 agent(s) (needs 30)",
+    "route": "/api/v1/agents?window_days=7&limit=50",
+    "evidence": ""
+   },
+   {
+    "kind": "inconclusive",
+    "area": "verify",
+    "expected": "model change claude-haiku-4-5 -> claude-sonnet-4-5 (2026-11-05): the agent whose traffic changed is identified",
+    "shown": "DB spans carry the model per org, not per agent, and more than one agent has runs",
+    "route": "/api/v1/agents/{id}/changes",
+    "evidence": "reviews/known_events.json"
+   },
+   {
+    "kind": "unsupported",
+    "area": "attention",
+    "expected": "headline states what failed, not a code location as the cause",
+    "shown": "commerce-agents is failing 39% of labeled runs \u2014 Runs labeled failed at anthropic.messages.stream (LLM call)",
+    "route": "/api/v1/dashboard/dashboards/org-brief?window_days=7",
+    "evidence": "ground-truth causes: ['input: no catalogue item fits the request']"
+   },
+   {
+    "kind": "info",
+    "area": "freshness",
+    "expected": "brief computed from current data",
+    "shown": "is_stale=true, computed_at=2026-11-06T01:50:05.499Z",
+    "route": "/api/v1/dashboard/dashboards/org-brief?window_days=7",
+    "evidence": ""
+   },
+   {
+    "kind": "info",
+    "area": "regression",
+    "expected": "R1-commerce-model-swap (model_swap) applied in its window",
+    "shown": "no regression_event lines: not applied (driver image older than the calendar?)",
+    "route": "-",
+    "evidence": "driver logs + reviews/regressions-applied.jsonl"
+   },
+   {
+    "kind": "ok",
+    "area": "expectation",
+    "expected": "success_rate >= 0.75 (stated: persona definition 2026-11-05); target breached reaches the brief or worklist",
+    "shown": "success_rate=0.625 over n=32 (driver labeled turns); surfaced",
+    "route": "/api/v1/dashboard/dashboards/org-brief?window_days=7",
+    "evidence": "owner profile"
+   },
+   {
+    "kind": "inconclusive",
+    "area": "expectation",
+    "expected": "cost_per_run_usd <= 0.02 (measured: reviews/2026-11-05 baseline cost/run 0.0077)",
+    "shown": "inconclusive: no db cross-check or fewer than 5 traces",
+    "route": "/api/v1/agents?window_days=7&limit=50",
+    "evidence": "owner profile"
+   }
+  ]
+ },
+ "gpt-researcher": {
+  "verdict": "fair",
+  "facts": {
+   "morse_runs_7d": 13,
+   "morse_labeled_7d": 2,
+   "morse_labeled_ok_7d": 2,
+   "morse_agents": 1,
+   "brief_headline": "3 slow traces above threshold",
+   "brief_chip": "Worth watching",
+   "brief_status": "ready",
+   "brief_stale": true,
+   "attention_items": 3,
+   "gt_judged": 3,
+   "gt_passed": 3,
+   "gt_labeled": 1,
+   "gt_labeled_passed": 1,
+   "gt_driver_calls": 6,
+   "db_traces": null,
+   "db_cost": null
+  },
+  "findings": [
+   {
+    "kind": "ok",
+    "area": "outcomes",
+    "expected": "labeled success 100% (1/1)",
+    "shown": "100% (2/2) across 1 agents",
+    "route": "/api/v1/agents?window_days=7&limit=50",
+    "evidence": ""
+   },
+   {
+    "kind": "info",
+    "area": "outcomes",
+    "expected": "success rate shown once labels exist",
+    "shown": "'not enough judged runs' on 1 agent(s) (needs 30)",
+    "route": "/api/v1/agents?window_days=7&limit=50",
+    "evidence": ""
+   },
+   {
+    "kind": "info",
+    "area": "freshness",
+    "expected": "brief computed from current data",
+    "shown": "is_stale=true, computed_at=2026-11-06T02:30:03.088Z",
+    "route": "/api/v1/dashboard/dashboards/org-brief?window_days=7",
+    "evidence": ""
+   },
+   {
+    "kind": "inconclusive",
+    "area": "expectation",
+    "expected": "success_rate >= 0.8 (assumed: 2/2 labeled in baseline, too few to state a floor)",
+    "shown": "inconclusive: fewer than 5 labeled runs in the window",
+    "route": "/api/v1/agents?window_days=7&limit=50",
+    "evidence": "owner profile"
+   },
+   {
+    "kind": "inconclusive",
+    "area": "expectation",
+    "expected": "cost_per_run_usd <= 0.01 (stated: persona definition 2026-11-05)",
+    "shown": "inconclusive: no db cross-check or fewer than 5 traces",
+    "route": "/api/v1/agents?window_days=7&limit=50",
+    "evidence": "owner profile"
+   },
+   {
+    "kind": "missing",
+    "area": "ask_morse",
+    "expected": "answers 'Did every research run finish this week, and what did a report cost?'",
+    "shown": "errors=[] declined=I couldn't identify a supported read reliably. Please clarify the record or feature you want me to check.",
+    "route": "/api/v1/copilot/chat",
+    "evidence": ""
+   }
+  ]
+ },
+ "gpt-researcher-azure": {
+  "verdict": "good",
+  "facts": {
+   "morse_runs_7d": 20,
+   "morse_labeled_7d": 0,
+   "morse_labeled_ok_7d": 0,
+   "morse_agents": 1,
+   "brief_headline": "2 slow traces above threshold",
+   "brief_chip": "Worth watching",
+   "brief_status": "ready",
+   "brief_stale": true,
+   "attention_items": 3,
+   "gt_judged": 4,
+   "gt_passed": 4,
+   "gt_labeled": 0,
+   "gt_labeled_passed": 0,
+   "gt_driver_calls": 7,
+   "db_traces": null,
+   "db_cost": null
+  },
+  "findings": [
+   {
+    "kind": "info",
+    "area": "freshness",
+    "expected": "brief computed from current data",
+    "shown": "is_stale=true, computed_at=2026-11-06T02:30:04.008Z",
+    "route": "/api/v1/dashboard/dashboards/org-brief?window_days=7",
+    "evidence": ""
+   },
+   {
+    "kind": "inconclusive",
+    "area": "expectation",
+    "expected": "success_rate >= 0.8 (assumed: no labeled outcomes in baseline)",
+    "shown": "inconclusive: fewer than 5 labeled runs in the window",
+    "route": "/api/v1/agents?window_days=7&limit=50",
+    "evidence": "owner profile"
+   },
+   {
+    "kind": "inconclusive",
+    "area": "expectation",
+    "expected": "cost_per_run_usd <= 0.01 (stated: persona definition 2026-11-05)",
+    "shown": "inconclusive: no db cross-check or fewer than 5 traces",
+    "route": "/api/v1/agents?window_days=7&limit=50",
+    "evidence": "owner profile"
+   }
+  ]
+ },
+ "gpt-researcher-bedrock": {
+  "verdict": "fair",
+  "facts": {
+   "morse_runs_7d": 18,
+   "morse_labeled_7d": 0,
+   "morse_labeled_ok_7d": 0,
+   "morse_agents": 1,
+   "brief_headline": "100% of spend has no recorded outcome",
+   "brief_chip": "Worth watching",
+   "brief_status": "ready",
+   "brief_stale": true,
+   "attention_items": 2,
+   "gt_judged": 3,
+   "gt_passed": 3,
+   "gt_labeled": 0,
+   "gt_labeled_passed": 0,
+   "gt_driver_calls": 6,
+   "db_traces": null,
+   "db_cost": null
+  },
+  "findings": [
+   {
+    "kind": "info",
+    "area": "freshness",
+    "expected": "brief computed from current data",
+    "shown": "is_stale=true, computed_at=2026-11-06T02:30:03.150Z",
+    "route": "/api/v1/dashboard/dashboards/org-brief?window_days=7",
+    "evidence": ""
+   },
+   {
+    "kind": "inconclusive",
+    "area": "expectation",
+    "expected": "success_rate >= 0.8 (assumed: no labeled outcomes in baseline)",
+    "shown": "inconclusive: fewer than 5 labeled runs in the window",
+    "route": "/api/v1/agents?window_days=7&limit=50",
+    "evidence": "owner profile"
+   },
+   {
+    "kind": "inconclusive",
+    "area": "expectation",
+    "expected": "cost_per_run_usd <= 0.005 (stated: persona definition 2026-11-05)",
+    "shown": "inconclusive: no db cross-check or fewer than 5 traces",
+    "route": "/api/v1/agents?window_days=7&limit=50",
+    "evidence": "owner profile"
+   },
+   {
+    "kind": "missing",
+    "area": "ask_morse",
+    "expected": "answers 'How much of my Bedrock spend is priced, and did any run come back empty?'",
+    "shown": "errors=[] declined=I can't verify this from your data. None of my available reads measures that claim. I can show the recorded Morse eviden",
+    "route": "/api/v1/copilot/chat",
+    "evidence": ""
+   }
+  ]
+ },
+ "insurance-live": {
+  "verdict": "good",
+  "facts": {
+   "morse_runs_7d": 51,
+   "morse_labeled_7d": 0,
+   "morse_labeled_ok_7d": 0,
+   "morse_agents": 4,
+   "brief_headline": "Repeated failure: google.genai.errors.ClientError",
+   "brief_chip": "Worth watching",
+   "brief_status": "ready",
+   "brief_stale": true,
+   "attention_items": 6,
+   "gt_judged": 18,
+   "gt_passed": 15,
+   "gt_labeled": 0,
+   "gt_labeled_passed": 0,
+   "gt_driver_calls": 38,
+   "db_traces": null,
+   "db_cost": null
+  },
+  "findings": [
+   {
+    "kind": "info",
+    "area": "freshness",
+    "expected": "brief computed from current data",
+    "shown": "is_stale=true, computed_at=2026-11-06T02:20:20.334Z",
+    "route": "/api/v1/dashboard/dashboards/org-brief?window_days=7",
+    "evidence": ""
+   },
+   {
+    "kind": "info",
+    "area": "false_positive",
+    "expected": "no drop/regression alarm on an app with no planted or known change",
+    "shown": "2 worklist alarm(s), 0 regressed change(s): ['Eval regression: response coherence v1', 'Eval regression: trajectory coherence v1']",
+    "route": "/api/v1/dashboard/dashboards/attention-worklist?window_days=7",
+    "evidence": "db shows an unplanted drop, or too few labeled days to tell"
+   },
+   {
+    "kind": "inconclusive",
+    "area": "expectation",
+    "expected": "success_rate >= 0.8 (measured: reviews/2026-11-05 baseline driver 10/12 judged)",
+    "shown": "inconclusive: fewer than 5 labeled runs in the window",
+    "route": "/api/v1/agents?window_days=7&limit=50",
+    "evidence": "owner profile"
+   },
+   {
+    "kind": "inconclusive",
+    "area": "expectation",
+    "expected": "cost_per_run_usd <= 0.002 (measured: reviews/2026-11-05 baseline cost/run 0.0003)",
+    "shown": "inconclusive: no db cross-check or fewer than 5 traces",
+    "route": "/api/v1/agents?window_days=7&limit=50",
+    "evidence": "owner profile"
+   }
+  ]
+ },
+ "legal-team": {
+  "verdict": "fair",
+  "facts": {
+   "morse_runs_7d": 41,
+   "morse_labeled_7d": 0,
+   "morse_labeled_ok_7d": 0,
+   "morse_agents": 5,
+   "brief_headline": "5 slow traces above threshold",
+   "brief_chip": "Needs attention",
+   "brief_status": "ready",
+   "brief_stale": true,
+   "attention_items": 6,
+   "gt_judged": 0,
+   "gt_passed": 0,
+   "gt_labeled": 0,
+   "gt_labeled_passed": 0,
+   "gt_driver_calls": 2,
+   "db_traces": null,
+   "db_cost": null
+  },
+  "findings": [
+   {
+    "kind": "inconclusive",
+    "area": "verify",
+    "expected": "model change gpt-4o-mini -> claude-haiku-4-5 (2026-11-04): the agent whose traffic changed is identified",
+    "shown": "DB spans carry the model per org, not per agent, and more than one agent has runs",
+    "route": "/api/v1/agents/{id}/changes",
+    "evidence": "reviews/known_events.json"
+   },
+   {
+    "kind": "info",
+    "area": "freshness",
+    "expected": "brief computed from current data",
+    "shown": "is_stale=true, computed_at=2026-11-06T02:30:04.142Z",
+    "route": "/api/v1/dashboard/dashboards/org-brief?window_days=7",
+    "evidence": ""
+   },
+   {
+    "kind": "inconclusive",
+    "area": "expectation",
+    "expected": "success_rate >= 0.8 (assumed: no labeled outcomes yet; owner has not stated a floor)",
+    "shown": "inconclusive: fewer than 5 labeled runs in the window",
+    "route": "/api/v1/agents?window_days=7&limit=50",
+    "evidence": "owner profile"
+   },
+   {
+    "kind": "inconclusive",
+    "area": "expectation",
+    "expected": "cost_per_run_usd <= 0.02 (stated: persona definition 2026-11-05)",
+    "shown": "inconclusive: no db cross-check or fewer than 5 traces",
+    "route": "/api/v1/agents?window_days=7&limit=50",
+    "evidence": "owner profile"
+   },
+   {
+    "kind": "wrong",
+    "area": "identity",
+    "expected": "the owner's hero agents are on /agents",
+    "shown": "['testbed-legal-team'] not listed",
+    "route": "/api/v1/agents?window_days=7&limit=50",
+    "evidence": "owner profile hero_agents"
+   }
+  ]
+ }
+}

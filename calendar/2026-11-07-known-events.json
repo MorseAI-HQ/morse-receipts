@@ -1,0 +1,13 @@
+{
+  "_doc": "Changes the testbed made on purpose. A good Morse review should notice them. Dates are the local day of the change; add new events weekly, never edit old ones. Read by scripts/morse_review.py (grading treats these as assumed, not measured).",
+  "lawglance": [{"date": "2026-11-04", "kind": "model_switch", "from": "gpt-4o-mini", "to": "claude-haiku-4-5", "note": "success fell from 13/19 to 0/10 after the switch (driver)"}],
+  "real-estate": [{"date": "2026-11-04", "kind": "model_switch", "from": "gpt-4o-mini", "to": "claude-haiku-4-5"}],
+  "holmesgpt": [{"date": "2026-11-04", "kind": "model_switch", "from": "gpt-4o-mini", "to": "claude-haiku-4-5"},
+                {"date": "2026-11-03", "kind": "known_failure", "note": "no data source configured, so rca_found@v1 fails 100%"}],
+  "medigenius": [{"date": "2026-11-04", "kind": "model_switch", "from": "gpt-4o-mini", "to": "claude-haiku-4-5"}],
+  "resume-matcher": [{"date": "2026-11-04", "kind": "model_switch", "from": "gpt-4o-mini", "to": "claude-haiku-4-5"}],
+  "legal-team": [{"date": "2026-11-04", "kind": "model_switch", "from": "gpt-4o-mini", "to": "claude-haiku-4-5"}],
+  "azure-search": [{"date": "2026-11-04", "kind": "pricing_gap", "note": "llm spans carried the deployment name only and were unpriced"}],
+  "finance-swarm": [{"date": "2026-11-05", "kind": "tracing_started", "note": "morse-ai 0.8.0; no earlier baseline exists"}],
+  "stock-research-vertex": [{"date": "2026-11-05", "kind": "tracing_started", "note": "morse-ai 0.8.0; no earlier baseline exists"}]
+}

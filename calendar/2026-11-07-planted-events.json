@@ -1,0 +1,39 @@
+{
+  "_doc": "Planted-regression calendar: scheduled, reversible faults with known start and end, so Morse's Verify, brief ranking and spend outliers can be graded against ground truth. Read by scripts/drive.py (applies each due event to that app's calls only, by header; the window end is the revert) and scripts/morse_review.py (grades whether Morse surfaced each event, and raised nothing on apps with none). Times are UTC. Add events, never rewrite applied ones; the driver image carries this file, so rebuild it after an edit (driver/cloudbuild.yaml). Check: python3 scripts/regressions.py",
+  "boosts": [
+    {"app": "real-estate", "sessions": 4, "from": "2026-11-05T13:00:00Z", "to": "2026-11-16T00:00:00Z",
+     "why": "ranker thresholds: >=150 baseline and >=30 runs in the 24h event window; ~$0.0004/run, so 4x volume costs cents"},
+    {"app": "financial-advisor", "sessions": 3, "from": "2026-11-05T13:00:00Z", "to": "2026-11-16T00:00:00Z",
+     "why": "spend outlier needs >=50 runs; Gemini flash-lite ~$0.002/run"}
+  ],
+  "events": [
+    {"id": "R1-commerce-model-swap", "app": "commerce-agents", "kind": "model_swap",
+     "start": "2026-11-05T12:55:00Z", "end": "2026-11-05T13:15:00Z",
+     "params": {"from": "claude-haiku-4-5", "to": "claude-sonnet-4-5"},
+     "expect": {"model": "claude-sonnet-4-5", "cost_ratio": 3, "success": "flat or better"},
+     "tests": ["verify_model_switch"],
+     "note": "Pilot, driven by hand (local scripts/drive.py) to prove apply -> drive -> revert; end moved from 14:55 to 13:15 while it ran (three rounds were enough; no scheduled run carried it). Below the ranker thresholds by design: Verify only."},
+    {"id": "R2-real-estate-retriever-off", "app": "real-estate", "kind": "retriever_off",
+     "start": "2026-11-09T00:00:00Z", "end": "2026-11-10T00:00:00Z", "params": {},
+     "expect": {"success": "real_estate_listing@v1 near 0% (no sources)", "cost_ratio": 1},
+     "tests": ["drop_ranker", "verify_quality"],
+     "note": "Listings search returns nothing; the answer has no sources, so the developer-tier check fails every turn."},
+    {"id": "R3-financial-advisor-model-swap", "app": "financial-advisor", "kind": "model_swap",
+     "start": "2026-11-11T00:00:00Z", "end": "2026-11-12T00:00:00Z",
+     "params": {"to": "gemini-2.5-flash"},
+     "expect": {"model": "gemini-2.5-flash", "cost_ratio": 4, "success": "flat"},
+     "tests": ["verify_model_switch", "spend_outlier"],
+     "note": "Gemini 2.5 Flash-Lite -> Flash. List prices are ~3x input and ~6x output (assumed, not measured)."},
+    {"id": "R4-commerce-tool-error", "app": "commerce-agents", "kind": "tool_error",
+     "start": "2026-11-12T12:00:00Z", "end": "2026-11-13T12:00:00Z", "params": {},
+     "expect": {"success": "recommended_products@v2 and added_to_cart@v2 fall sharply", "cost_ratio": 1},
+     "tests": ["verify_quality"],
+     "note": "Every tool result the model reads is a 503 error. At current volume (~20 runs/day) this is below the 24h ranker thresholds: Verify and the brief only."},
+    {"id": "R5-real-estate-cost-spike", "app": "real-estate", "kind": "model_swap",
+     "start": "2026-11-13T00:00:00Z", "end": "2026-11-14T00:00:00Z",
+     "params": {"from": "claude-haiku-4-5", "to": "claude-opus-4-5"},
+     "expect": {"model": "claude-opus-4-5", "cost_ratio": 5, "success": "flat or better"},
+     "tests": ["spend_outlier", "verify_model_switch"],
+     "note": "Haiku 4.5 -> Opus 4.5 is 5x per token at list price (assumed); per-run cost should clear the 3x-median outlier rule."}
+  ]
+}
