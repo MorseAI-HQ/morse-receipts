@@ -10,9 +10,12 @@ incidents**. This repository is the public record.
 
 - `calendar/` — the planted-incident calendar and the log of known changes, published
   **before** the incidents run. The snapshot committed on 2026-11-07 covers four scheduled
-  incidents (retriever outage, model swap, tool-error day, cost spike) that run 2026-11-09
-  through 2026-11-14. One earlier incident (`R1-commerce-model-swap`) was a hand-driven
-  pilot that had already completed when this snapshot was published; the grading that counts
+  incidents (retriever outage, model swap, tool-error day, cost spike). The 2026-11-08
+  snapshot compresses the schedule: R2 runs 2026-11-09 as originally registered, and
+  R3/R4/R5 move up to 2026-11-10 — re-registered before those windows opened, so every
+  answer key still predates its incident. Snapshots are never edited; a change is a new
+  dated snapshot. One earlier incident (`R1-commerce-model-swap`) was a hand-driven pilot
+  that had already completed when the first snapshot was published; the grading that counts
   is R2–R5, pre-registered here.
 - `receipts/<date>/` — one bundle per weekly review: `grades.json` (per-app verdict, the
   facts the review was graded on, and every finding with what was expected vs what Morse
