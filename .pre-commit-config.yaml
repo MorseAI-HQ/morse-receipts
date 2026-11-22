@@ -1,0 +1,29 @@
+# One `pre-commit install` wires all three stages (commit, commit-msg, pre-push).
+default_install_hook_types: [pre-commit, commit-msg, pre-push]
+
+repos:
+  # Commit identity guard (founder rule, 2026-11-22): every commit is morsehq-dev <service@morsehq.dev>, with no
+  # co-author or AI-attribution lines. One script, three stages: the identity git will use, the message, and
+  # every commit about to be pushed. Never skip it. Canonical copy: morse-core/scripts/check-commit-identity.py.
+  - repo: local
+    hooks:
+      - id: commit-identity
+        name: commit identity is morsehq-dev
+        entry: python3 scripts/check-commit-identity.py identity
+        language: system
+        pass_filenames: false
+        always_run: true
+        stages: [pre-commit]
+      - id: commit-message-attribution
+        name: no co-author or AI attribution in commit message
+        entry: python3 scripts/check-commit-identity.py message
+        language: system
+        always_run: true
+        stages: [commit-msg]
+      - id: pushed-commit-identity
+        name: pushed commits are morsehq-dev with no attribution
+        entry: python3 scripts/check-commit-identity.py push
+        language: system
+        pass_filenames: false
+        always_run: true
+        stages: [pre-push]
